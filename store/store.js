@@ -17,7 +17,7 @@ const makeStore = () => {
   const storage = require("redux-persist/lib/storage").default;
 
   const persistConfig = {
-    key: "skydropx_persist",
+    key: "app_persist",
     storage,
     stateReconciler: hardSet,
   };
