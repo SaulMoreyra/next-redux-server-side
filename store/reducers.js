@@ -9,19 +9,8 @@ const combinedReducer = combineReducers({
 });
 
 const reducer = (state, action) => {
-  if (action.type === HYDRATE) {
-    const nextState = {
-      ...state,
-      ...action.payload,
-    };
-
-    // console.log("NEXTSTATE", nextState.menu);
-    return nextState;
-  } else {
-    const reducer = combinedReducer(state, action);
-    console.log("REDUCER", reducer.menu);
-    return reducer;
-  }
+  if (action.type === HYDRATE) return { ...state, ...action.payload };
+  return combinedReducer(state, action);
 };
 
 export default reducer;

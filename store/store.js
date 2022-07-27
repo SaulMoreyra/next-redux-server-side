@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
-import { createBlacklistFilter } from "redux-persist-transform-filter";
-import hardSet from "redux-persist/lib/stateReconciler/hardSet";
+import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2";
 import rootReducer from "./reducers";
 
 const makeConfiguredStore = (reducer) => {
@@ -14,10 +13,6 @@ const makeConfiguredStore = (reducer) => {
 };
 
 const makeStore = () => {
-  // const isServer = typeof window === "undefined";
-
-  // if (isServer) return makeConfiguredStore(rootReducer);
-
   const { persistStore, persistReducer } = require("redux-persist");
   const storage = require("redux-persist/lib/storage").default;
 
@@ -25,7 +20,7 @@ const makeStore = () => {
     key: "app_persist",
     storage,
     whitelist: ["token"],
-    stateReconciler: hardSet,
+    stateReconciler: autoMergeLevel2,
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);
