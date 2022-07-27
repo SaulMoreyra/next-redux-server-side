@@ -8,16 +8,20 @@ const combinedReducer = combineReducers({
   token,
 });
 
-/* const reducer = (state, action) => {
+const reducer = (state, action) => {
   if (action.type === HYDRATE) {
     const nextState = {
-      ...state, // use previous state
-      ...action.payload, // apply delta from hydration
+      ...state,
+      ...action.payload,
     };
+
+    // console.log("NEXTSTATE", nextState.menu);
     return nextState;
   } else {
-    return combinedReducer(state, action);
+    const reducer = combinedReducer(state, action);
+    console.log("REDUCER", reducer.menu);
+    return reducer;
   }
-}; */
+};
 
-export default combinedReducer;
+export default reducer;

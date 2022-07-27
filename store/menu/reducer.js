@@ -1,7 +1,7 @@
 import { menuActionTypes } from "./action";
 
 const manuInitialState = {
-  menu: [],
+  menu: null,
 };
 
 export default function reducer(state = manuInitialState, action) {
