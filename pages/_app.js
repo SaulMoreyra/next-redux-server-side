@@ -3,15 +3,15 @@ import { PersistGate } from "redux-persist/integration/react";
 import { useStore } from "react-redux";
 
 const WrappedApp = ({ Component, pageProps }) => {
-  /*  const store = useStore(); */
+  const store = useStore();
 
   return (
-    /*     <PersistGate
+    <PersistGate
       persistor={store.__persistor}
       loading={<Component {...pageProps} />}
-    > */
-    <Component {...pageProps} />
-    /*     </PersistGate> */
+    >
+      <Component {...pageProps} />
+    </PersistGate>
   );
   // return <Component {...pageProps} />;
 };
